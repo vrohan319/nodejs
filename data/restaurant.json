@@ -1,16 +1,1 @@
-[
-  {
-    "name": "test1",
-    "address": "lko",
-    "cuisine": "indian",
-    "website": "https://leetcode.com/",
-    "description": "hi"
-  },
-  {
-    "name": "test2",
-    "address": "lko",
-    "cuisine": "indian",
-    "website": "https://leetcode.com/",
-    "description": "hellow"
-  }
-]
+[{"name":"test1","address":"lko","cuisine":"indian","website":"https://leetcode.com/","description":"hi"},{"name":"test2","address":"lko","cuisine":"indian","website":"https://leetcode.com/","description":"hellow"},{"name":"sdd","address":"dd","cuisine":"asd","website":"https://leetcode.com/","description":"sad"}]
