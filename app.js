@@ -56,7 +56,14 @@ app.post("/recommend", (req, res) => {
 app.get("/restaurants", (req, res) => {
   // const htmlFilePath = path.join(__dirname, "views", "restaurants.html");
   // res.sendFile(htmlFilePath);
-  res.render("restaurants");
+
+  const filePath = path.join(__dirname, "data", "restaurant.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  res.render("restaurants", {
+    numbersOfRestaurants: storedRestaurants.length,
+  });
 });
 
 app.listen(3000); // so that the server can listen our requests
