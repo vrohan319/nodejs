@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("includes/head") %>
-    <link rel="stylesheet" href="styles/restaurants.css" />
-  </head>
-  <body>
-    <%- include("includes/header")%> <%- include("includes/aside")%>
-    <main>
-      <h1>Recommended restaurants</h1>
-      <% if(restaurants.length === 0){ %>
-      <p>unfortunatly no restaurant available</p>
-      <% }else{ %>
-      <p>Find your next favorite restaurants with help of our other users!</p>
-      <p>We found <%= numbersOfRestaurants %> restaurants.</p>
-      <ul id="restaurants-list">
-        <% for(const restaurant of restaurants){ %> <%-
-        include("includes/restaurant/restaurant",{restaurant:restaurant}) %> <%
-        } %>
-      </ul>
+
+<head>
+  <%- include("includes/head") %>
+  <link rel="stylesheet" href="styles/restaurants.css" />
+</head>
+<body>
+  <%- include("includes/header")%> <%- include("includes/aside")%>
+  <main>
+    <h1>Recommended restaurants</h1>
+    <% if(restaurants.length === 0){ %>
+    <p>unfortunatly no restaurant available</p>
+    <% }else{ %>
+    <p>Find your next favorite restaurants with help of our other users!</p>
+    <p>We found <%= numbersOfRestaurants %> restaurants.</p>
+    <ul id="restaurants-list">
+      <% for(const restaurant of restaurants){ %>
+      <%-include("includes/restaurant/restaurant-item",{restaurant:restaurant}) %> 
       <% } %>
-    </main>
-  </body>
+    </ul>
+    <% } %>
+  </main>
+</body>
+
 </html>
