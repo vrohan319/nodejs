@@ -3,7 +3,7 @@
 
 <head>
   <%- include("includes/head") %>
-  <link rel="stylesheet" href="styles/restaurants.css" />
+  <link rel="stylesheet" href="/styles/restaurants.css" />
 </head>
 <body>
   <%- include("includes/header")%> <%- include("includes/aside")%>
@@ -16,10 +16,10 @@
     <p>We found <%= numbersOfRestaurants %> restaurants.</p>
     <ul id="restaurants-list">
       <% for(const restaurant of restaurants){ %>
-      <%-include("includes/restaurant/restaurant-item",{restaurant:restaurant}) %> 
+      <%- include("includes/restaurant/restaurant-item",{restaurant:restaurant}) %> 
       <% } %>
     </ul>
-    <% } %>
+    <% } %> 
   </main>
 </body>
 

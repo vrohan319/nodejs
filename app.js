@@ -67,4 +67,9 @@ app.get("/restaurants", (req, res) => {
   });
 });
 
+app.get("/restaurant/:id", (req, res) => {
+  const id = req.params.id;
+  res.render("restaurant-detail", { rid: id });
+});
+
 app.listen(3000); // so that the server can listen our requests
