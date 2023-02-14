@@ -3,6 +3,8 @@ const fs = require("fs"); // file system to read and write in files
 const express = require("express"); // to create server
 const app = express();
 
+const uuid = require("uuid"); //! to generate unique id (uniform unique id)
+
 //! for using templates ///// after installing ejs package
 //set method allow us to set some options
 app.set("views", path.join(__dirname, "views")); //setting the path where to look for the templets
@@ -40,6 +42,7 @@ app.get("/recommend", (req, res) => {
 
 app.post("/recommend", (req, res) => {
   const restaurant = req.body; // getting the data
+  restaurant.id = uuid.v4();
   const filePath = path.join(__dirname, "data", "restaurant.json"); // setting up the file path
 
   const fileData = fs.readFileSync(filePath); // first read the data from the file by passing the filePath to fs
@@ -69,7 +72,25 @@ app.get("/restaurants", (req, res) => {
 
 app.get("/restaurant/:id", (req, res) => {
   const id = req.params.id;
-  res.render("restaurant-detail", { rid: id });
+
+  const filePath = path.join(__dirname, "data", "restaurant.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  for (const restaurant of storedRestaurants) {
+    if (restaurant.id === id) {
+      return res.render("restaurant-detail", { restaurant: restaurant });
+    }
+    res.render("404");
+  }
 });
+
+app.use((req, res) => {
+  res.render("404");
+});
+
+app.use((error, req, res, next) => {
+  res.render("500");
+})
 
 app.listen(3000); // so that the server can listen our requests
